@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { init, mint, transfer, getPaymasterBalance } from './Web3Client';
 
 function App() {
+  useEffect(() => {
+    init();
+  }, []);
+
+  const handleMint = () => {
+    mint(200);
+  };
+
+  const handleTransfer = () => {
+    transfer(100);
+  }
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <button onClick={handleMint}>Mint Tokens</button>
+      <button onClick={handleTransfer}>Transfer 100 Tokens</button>
+      <button onClick={getPaymasterBalance}>Console Paymaster Balance</button>
     </div>
   );
 }
